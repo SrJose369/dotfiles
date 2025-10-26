@@ -1,0 +1,50 @@
+# General Aliases
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias rm="rm -ri"
+alias mv="mv -i"
+# alias vim="nvim"
+alias ls="ls -lah --color=auto"
+alias df='df -h'
+alias free='free -m'
+alias kchrome="ps -e | rg chrom | awk '{print $1}' | xargs kill -9"
+
+# Git Aliases
+alias gpush="git push"
+alias gpull="git pull --prune"
+alias gc="git commit -m"
+alias ga="git add ."
+alias gadog='PAGER="less -F -X" git adog'
+alias glog='PAGER="less -F -X" git log'
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# Tmux
+alias tkill="tmux kill-session -t"
+alias tlist="tmux list-sessions"
+alias tattach="tmux attach"
+
+# dotfiles
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# AWS
+alias stop:lightsail="aws lightsail stop-instance --region ap-northeast-1 --instance-name dcconnect_rad"
+alias start:lightsail="aws lightsail start-instance --region ap-northeast-1 --instance-name dcconnect_rad"
+
+# my aliases
+alias ll='ls -alF'
+
+alias gss='git status --short'
+alias gst='git status'
+# lg = "!git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(bold yellow)%d%C(reset)' --all #"
+# ld = "!git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ai)%C(reset) %C(bold yellow)%d%C(reset)' --all #"
+
+alias ta='tmux attach -t'
+alias tn='tmux new-session -s '
+alias tk='tmux kill-session -t '
+
+# Weather
+alias forecast='curl "https://wttr.in/wylie?1&F&q"'
+alias weather='curl "https://wttr.in/wylie?format=1"'
+
+alias gl= 'log --oneline --decorate --graph --all'
+alias glo= 'log --oneline --all'

@@ -1,0 +1,3 @@
+# zsh config
+
+owo
