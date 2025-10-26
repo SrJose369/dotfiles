@@ -1,0 +1,39 @@
+[safe]
+	director = F:/A/Programacion/Web/nodeApi
+	directory = F:/A/Programacion/Web/iutuSearch
+	directory = F:/A/Programacion/Web/Continue
+	directory = F:/A/Programacion/Web/F1
+	directory = F:/A/java/Act_Time
+	directory = F:/A/java/El_Game
+	directory = F:/A/java/Snake14
+	directory = F:/A/java/tateti
+	directory = F:/A/java/Konstans
+	directory = F:/A/java/continueApi
+	directory = F:/A/java/spring-continue
+	directory = F:/A/java/data-structure
+	directory = F:/A/java/Operaciones
+[core]
+	editor = nvim
+	autocrlf = false
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Jose Gonzalez
+	email = programacionjose369@gmail.com
+	username = Jose Gonzalez
+[alias]
+	c = "!git commit -m\"$1\" -m\"$2\" #"
+	l = log --oneline --decorate --graph --all
+	lg = "!git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(bold yellow)%d%C(reset)' --all #"
+	ld = "!git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ai)%C(reset) %C(bold yellow)%d%C(reset)' --all #"
+	lo = log --oneline --all
+	s = status -s
+	ss = status
+	t = "!git tag -a \"$1\" -m \"$2\" #"
+[credential]
+	helper = store
