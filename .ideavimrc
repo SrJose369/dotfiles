@@ -1,0 +1,269 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+let mapleader=" "
+set number relativenumber
+set tabstop=4
+set scrolloff=1 " Display at least 5 lines around you cursor
+
+" Set shift width to 4 spaces.
+"set shiftwidth=4
+" Use space characters instead of tabs.
+"set expandtab
+" Do not wrap lines. Allow long lines to extend as far as the line goes.
+"set nowrap
+" While searching though a file incrementally highlight matching characters as you type.
+"set incsearch
+" Ignore capital letters during search.
+"set ignorecase
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+"set smartcase
+" Show partial command you type in the last line of the screen.
+"set showcmd
+" Show the mode you are on the last line.
+"set showmode
+" Show matching words during a search.
+"set showmatch
+" Use highlighting when doing a search.
+"set hlsearch
+" Set the commands to save in history default number is 20.
+set history=100
+" Enable auto completion menu after pressing TAB.
+"set wildmenu
+" Make wildmenu behave like similar to Bash completion.
+"set wildmode=list:longest
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+"set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" Disable compatibility with vi which can cause unexpected issues.
+"set nocompatible
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+"filetype on
+" Enable plugins and load plugin for the detected file type.
+"filetype plugin on
+" Load an indent file for the detected file type.
+"filetype indent on
+" Turn syntax highlighting on.
+"syntax on
+" Highlight cursor line underneath the cursor horizontally.
+"set cursorline
+" Highlight cursor line underneath the cursor vertically.
+"set cursorcolumn
+
+" Do incremental searching.
+set incsearch
+set ideajoin
+set visualbell
+set showcmd
+set noerrorbells
+set incsearch " Highlight search results when typing
+set hlsearch " Highlight search results
+set relativenumber " relative numbers
+set ignorecase " Ignore case when searching
+set smartcase " If there is an uppercase in your search term
+set nrformats-=octal
+set idearefactormode=keep
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+""" IdeaVim plugins
+"packadd matchit		" Extended matching. Supports % (matching motion) and g% (reverse motion)
+Plug 'easymotion/vim-easymotion'	" Requires IdeaVim-EasyMotion. Lots of mappings
+Plug 'kana/vim-textobj-entire'		" entire buffer text object: ae
+Plug 'machakann/vim-highlightedyank'
+Plug 'terryma/vim-multiple-cursors'	" See below for remapped keys. <A-n> doesn't work on Mac
+Plug 'tommcdo/vim-exchange'		    " cx{motion} to select, again to exchange
+Plug 'tpope/vim-commentary'		    " [count]gc{motion}, o_gc, v_gc, gcc
+Plug 'tpope/vim-surround'		    " ys, cs, ds, S
+Plug 'vim-scripts/argtextobj.vim'	    " argument text objects: aa, ia
+Plug 'vim-scripts/ReplaceWithRegister'  " [count][{reg:}]gr{motion}, [count][{reg}]grr, {Visual}[{reg}]gr
+Plug 'preservim/nerdtree'
+Plug 'justinmk/vim-sneak'
+
+nnoremap < <<
+nnoremap > >>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap zx zO
+"nnoremap <leader>j :action AceAction <CR>
+nnoremap <A-K> :action AceAction <CR>
+"nnoremap nn :action Generate<CR>
+vnoremap <leader>so :action EditorSortLines <CR>
+nnoremap <leader>v V
+nnoremap <leader>g G
+vnoremap <leader>g G
+xnoremap ir i[
+onoremap ir :<C-u>execute 'normal v' . v:count1 . 'i['<CR>
+xnoremap ar a[
+onoremap ar :<C-u>execute 'normal v' . v:count1 . 'a['<CR>
+nnoremap <leader>ic ci"
+"nnoremap <leader>ip ci(
+nnoremap <leader>ir ci[
+"nnoremap <leader>il ci}
+"nnoremap <leader>dc dt"
+nnoremap <leader>db dt)
+nnoremap <leader>dr dt]
+nnoremap <leader>dl dt{
+nnoremap <A-J> :action EditorCloneCaretBelow<CR>
+"nnoremap <A-K> :action EditorCloneCaretAbove<CR>
+nnoremap <A-H> :action Back<CR>
+nnoremap <A-L> :action Forward<CR>
+vnoremap <s-j> :action MoveLineDown<CR>
+vnoremap <s-k> :action MoveLineUp<CR>
+nnoremap <s-u> :action $Redo<CR>
+vnoremap <s-u> :action $Redo<CR>
+vnoremap <c-u> <s-u>
+inoremap jj <Esc>
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nnoremap nn n
+nmap nc <Plug>NextWholeOccurrence
+xmap nc <Plug>NextWholeOccurrence
+nmap ng <Plug>NextOccurrence
+xmap ng <Plug>NextOccurrence
+xmap nx <Plug>SkipOccurrence
+xmap np <Plug>RemoveOccurrence
+nmap <leader>nc <Plug>AllWholeOccurrences
+xmap <leader>nc <Plug>AllWholeOccurrences
+nmap <leader>ng <Plug>AllOccurrences
+xmap <leader>ng <Plug>AllOccurrences
+" split window
+nnoremap <leader>sv :action SplitVertically<CR>
+nnoremap <leader>ss :action SplitHorizontally<CR>
+nnoremap <leader>sc :action UnsplitAll<CR>
+"nnoremap <leader>v :action NextSplitter<CR>
+" system clipboard
+vnoremap yu y
+nnoremap yp "+p
+xnoremap yp "+p
+nnoremap yd "0p
+xnoremap yd "0p
+nnoremap yf "1p
+xnoremap yf "1y
+nnoremap yg "2p
+xnoremap yg "2y
+xnoremap yc "+y
+nnoremap yv :action PasteMultiple<CR>
+" scrolling
+nmap <a-u> <C-d>
+nmap <a-i> <C-u>
+" Comment
+nnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>b :action CommentByBlockComment<CR>
+" Refactorings
+nnoremap <leader>oi :action OptimizeImports<CR>
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>rf :action RenameFile<CR>
+nnoremap <leader>ri :action Inline<CR>
+nnoremap <leader>rv :action IntroduceVariable<CR>
+nnoremap <leader>rm :action ExtractMethod<CR>
+nnoremap <leader>rr :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>rp :action IntroduceParameter<CR>
+nnoremap <leader>im :action ImplementMethods<CR>
+nnoremap <leader>om :action OverrideMethods<CR>
+" GoTo
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gu :action FindUsages<CR>
+nnoremap gf :action FindUsagesInFile<CR>
+nnoremap gb :action GotoNextElementUnderCaretUsage<CR>
+nnoremap gi :action GotoImplementation<CR>
+"nnoremap gs :action ActivateStructureToolWindow<CR>
+nnoremap gh :action ShowHoverInfo<CR>
+nnoremap gk :action QuickJavaDoc<CR>
+nnoremap ge :action ShowErrorDescription<CR>
+nnoremap gn :action GotoNextError<CR>
+nnoremap gs :action GotoTest<CR>
+nnoremap <leader>sp :action ParameterInfo<CR>
+nnoremap <leader>sd :action QuickImplementations<CR>
+" Quick fix
+nnoremap gj :action ShowIntentionActions<CR>
+"nnoremap <leader>w :w<CR>
+nnoremap <leader>w :action Javascript.Linters.EsLint.Fix<CR>
+nnoremap <leader>p :action ReformatCode<CR>
+" Search
+nnoremap <leader>fi :action Find<CR>
+vnoremap <leader>fi :action Find<CR>
+vnoremap <leader>fr :action Replace<CR>
+nnoremap <leader>fr :action ReplaceInPath<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>fa :action GotoAction<CR>
+nnoremap <leader>fg :action FindInPath<CR>
+nnoremap <leader>fo :action SelectInProjectView<CR>
+" Test and Run
+nnoremap <leader>hc :action RunClass<CR>
+nnoremap <leader>hr :action Rerun<CR>
+nnoremap <leader>hf :action RerunFailedTests<CR>
+"nnoremap <leader>hg :action VcsGroups<CR>
+nnoremap <leader>hg :action Git.Menu<CR>
+nnoremap <leader>hh :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>ha :action LocalHistory.ShowHistory<CR>
+" Jumping built-in navigation to navigated items works better
+nnoremap <a-h> :action Back<CR>
+nnoremap <a-l> :action Forward<CR>
+" Navigation
+nnoremap ]c :action GotoNextError<CR>
+nnoremap [c :action GotoPreviousError<CR>
+nnoremap ]h :action VcsShowNextChangeMarker<CR>
+nnoremap [h :action VcsShowPrevChangeMarker<CR>
+" Tab
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
+nnoremap <A-O> :action CloseEditor<CR>
+"sethandler <c-j> a:vim
+"sethandler <c-k> a:vim
+"sethandler <c-w> a:vim
+" You can split the window in Vim by typing :split or :vsplit.
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" Resize split windows using arrow keys by pressing:
+" CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
+nmap <C-0> <Action>(MaximizeEditorInSplit)
+nmap <C-Down> <Action>(StretchSplitToBottom)
+nmap <C-Left> <Action>(StretchSplitToLeft)
+nmap <C-Right> <Action>(StretchSplitToRight)
+nmap <C-Up> <Action>(StretchSplitToTop)
+nnoremap <leader>ne :action EditorSourceInNewWindow<CR>
+nnoremap <leader>nw :action NextWindows<CR>
+" NERDTree specific mappings.:he
+nnoremap <leader>e :NERDTree<CR>
+
+" Have nerdtree ignore certain files and directories.
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+let g:NERDTreeMapActivateNode='o'
+let g:NERDTreeMapJumpParent='h'
+let g:NERDTreeMapNewFile='u'
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+
+" Clear status line when vimrc is reloaded.
+"set statusline=
+" Status line left side.
+"set statusline+=\ %F\ %M\ %Y\ %R
+" Use a divider to separate the left side from the right side.
+"set statusline+=%=
+" Status line right side.
+"set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+" Show the status on the second to last line.
+"set laststatus=2
