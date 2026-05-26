@@ -8,7 +8,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export TZ="America/Argentina/Buenos_Aires"
 
 export ZSH="$HOME/.oh-my-zsh"
+#export ZSH_CUSTOM="$HOME/.config/zsh"
 export PATH="$PATH:/opt/nvim/"
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$(go env GOPATH)/bin
 export fv="$HOME/.config/nvim/lua/"
 export fc="/mnt/c/Users/elpib/Documents/Continue/"

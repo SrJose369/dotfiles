@@ -28,5 +28,4 @@ source $ZSH/oh-my-zsh.sh
 	apply zsh-users zsh-autosuggestions
 	apply jeffreytse zsh-vi-mode
 	apply agkozak zsh-z
-	apply romkatv powerlevel10k
-}
+	apply romkatv powerlevel10k}
